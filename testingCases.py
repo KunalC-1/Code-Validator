@@ -73,7 +73,6 @@ class TestCaseRunner(unittest.TestCase):
                     print("\nYour Output :")
                     print(output)
                     e.args = ""
-                    print(e)
                     raise
 
 if __name__ == "__main__":

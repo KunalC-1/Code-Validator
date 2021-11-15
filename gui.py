@@ -30,7 +30,6 @@ cdg.tagdefs['DEFINITION'] = {'foreground': '#007F7F', 'background': '#FFFFFF'}
 
 
 
-
 # Creating window instance
 window = Tk()
 
@@ -46,6 +45,7 @@ editor = ScrolledText(window, font=("haveltica 10 bold"), wrap=None)
 editor.pack(fill=BOTH, expand=1)
 editor.focus()
 ip.Percolator(editor).insertfilter(cdg)
+
 file_path = ""
 testcase_file_path = ""
 
@@ -227,7 +227,7 @@ editor.bind("<<Modified>>",change_word)
 # Light Mode
 def light():
     editor.config(bg="white",fg="black")
-    output_window.config(bg="white")
+    output_window.config(bg="white", fg="black")
 
 # Dark Mode
 def dark():
