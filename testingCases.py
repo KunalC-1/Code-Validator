@@ -1,6 +1,7 @@
 from tkinter.filedialog import test
 import unittest
 import subprocess
+
 def createTestCases():
     if testcases_file_path == '':
         return []
@@ -47,6 +48,7 @@ def trimOutput(output):
     return output
 
 class TestCaseRunner(unittest.TestCase):
+    
     def testRunner(self):
         for i in range(len(testCases)):
             with self.subTest(i=i):
@@ -62,8 +64,6 @@ class TestCaseRunner(unittest.TestCase):
                     print(error.decode())
                     return
                 else:
-                    # print("Expected",  testCases[i][1].encode())
-                    # print("Actual",output)
                     if output == testCases[i][1]:
                         isTestCaseMatched = True
                 print (f"\nTest Case {i}   :    ✅") if (isTestCaseMatched) else print(f"\nTest Case {i}   :    ❌")
@@ -80,6 +80,5 @@ if __name__ == "__main__":
     testcases_file_path = input()
     program_path = input()
     testCases, valid = createTestCases()
-    # print(testCases)
     if valid:
         unittest.main()

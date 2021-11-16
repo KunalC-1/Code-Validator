@@ -14,7 +14,7 @@ def open_file(event=None):
 
 def create_file(event=None):
     global file_path
-    save_path = asksaveasfilename(defaultextension = ".py", filetypes=[("Text File", "*.txt")])
+    save_path = asksaveasfilename(defaultextension = ".txt", filetypes=[("Text File", "*.txt")])
     if len(save_path) == 0:
         return
     file_path = save_path

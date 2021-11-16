@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.filedialog import asksaveasfilename, askopenfilename
 from tkinter.scrolledtext import ScrolledText
+from tkinter.font import BOLD, Font
 import subprocess
 import sys
 import idlelib.colorizer as ic
@@ -35,13 +36,28 @@ window = Tk()
 
 # Setting title for window
 window.title("Python IDE")
+# window.geometry("500x500")
 
 # Creating and configuring menu for display
 menu = Menu(window)
 window.config(menu=menu)
 
+
+# Adding zoom in / zoom out
+font =Font(family="Courier", size=10, weight="bold")
+
+def zoom(size):
+    font.configure(size=int(float(size)))
+
+zoom_scale = ttk.Scale(window, orient='vertical', from_=1, to=20)
+zoom_scale.config(command=zoom)
+
+zoom_scale.pack(fill='y', side='right')
+
+zoom_scale.set(10)
+
 # Editor window 
-editor = ScrolledText(window, font=("haveltica 10 bold"), wrap=None)
+editor = ScrolledText(window, font=font, wrap=None)
 editor.pack(fill=BOTH, expand=1)
 editor.focus()
 ip.Percolator(editor).insertfilter(cdg)
@@ -227,12 +243,12 @@ editor.bind("<<Modified>>",change_word)
 # Light Mode
 def light():
     editor.config(bg="white",fg="black")
-    output_window.config(bg="white", fg="black")
+    output_window.config(bg="white", fg="green")
 
 # Dark Mode
 def dark():
-    editor.config(fg="white", bg="black")
-    output_window.config(fg="white", bg="black")
+    editor.config(fg="white", bg="grey")
+    output_window.config(fg="green", bg="grey")
 
 # Addind commands to Theme Menu
 theme_menu.add_command(label="light", command=light)
@@ -252,7 +268,7 @@ window.bind("<Control-t>", choose_test_case)
 test_menu.add_command(label="Choose", accelerator="Ctrl+T", command=choose_test_case)
 
 # create output window to display output of written code
-output_window = ScrolledText(window,font=("haveltica 10 bold"),foreground="green", height=16)
+output_window = ScrolledText(window,font=font,foreground="green", height=16)
 output_window.pack(fill=BOTH, expand=1)
 output_window.configure(state="disabled")
 window.mainloop()
