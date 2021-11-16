@@ -45,6 +45,7 @@ def trimOutput(output):
             i -= 1
         else:
             break
+    output.rstrip()
     return output
 
 class TestCaseRunner(unittest.TestCase):

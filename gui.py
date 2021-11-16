@@ -44,17 +44,17 @@ window.config(menu=menu)
 
 
 # Adding zoom in / zoom out
-font =Font(family="Courier", size=10, weight="bold")
+font =Font(family="Courier", size=12, weight="bold")
 
 def zoom(size):
     font.configure(size=int(float(size)))
 
-zoom_scale = ttk.Scale(window, orient='vertical', from_=1, to=20)
+zoom_scale = ttk.Scale(window, orient='vertical', from_=1, to=30)
 zoom_scale.config(command=zoom)
 
 zoom_scale.pack(fill='y', side='right')
 
-zoom_scale.set(10)
+zoom_scale.set(12)
 
 # Editor window 
 editor = ScrolledText(window, font=font, wrap=None)
